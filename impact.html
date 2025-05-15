@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact - Mortal Combat Your Writing through "Flip Book"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero impact-hero">
+        <div class="hero-content">
+            <h1>Impact</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main id="impact">
+        <section class="impact-list">
+            <div class="impact-item">
+                <i class="fa-solid fa-vial info-icon"></i>
+                <p>The Metadiscourse Awareness Test has gone through stringent validity and reliability test results and therefore, it is a valid instrument to be used in future research. This test could be commercialised as a reference for all writing genres to determine the latent awareness of metadiscourse use by writers.</p>
+            </div>
+            <div class="impact-item">
+                <i class="fa-solid fa-book-open info-icon"></i>
+                <p>The constructed texts with and without metadiscourse could be commercialised as a guide to aid writing instructors to use authentic texts for teaching metadiscourse use in writing classroom.</p>
+            </div>
+            <div class="impact-item">
+                <i class="fa-solid fa-lightbulb info-icon"></i>
+                <p>The writing prompts could be commercialised as a guideline for the writers to know the functions of metadiscourse in order to prepare them for real experience of language in any sort of setting on how far they can engage the readers in authentic interpretation, interaction and communication.</p>
+            </div>
+            <div class="impact-item">
+                <i class="fa-solid fa-graduation-cap info-icon"></i>
+                <p>This innovation could also be a useful guide to the Ministry of Higher Education to structure the University Degree programmes according to the levels of Sustainable Development Goals (SDGs), particularly in SDG4, which is Quality Education.</p>
+            </div>
+            <div class="impact-item">
+                <i class="fa-solid fa-handshake info-icon"></i>
+                <p>It is hoped that there are commercialisation plans and a joint venture with the Ministry of Higher Education.</p>
+            </div>
+        </section>
+    </main>
+    <script>
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+        // Now run the highlight script after nav is loaded
+        const links = document.querySelectorAll('#main-nav a');
+        const path = window.location.pathname.replace(/\\/g, '/');
+        links.forEach(link => {
+          if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>

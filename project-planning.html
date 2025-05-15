@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Planning - Mortal Combat Your Writing through "Flip Book"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero project-hero">
+        <div class="hero-content">
+            <h1>Project Planning</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main id="project-planning">
+        <!-- Section 1: Project Overview Videos -->
+        <section class="project-section">
+            <h2><i class="fa-solid fa-video"></i> Planning of Flip Book</h2>
+            <div class="video-item">
+                <video controls poster="videos/VIC 2025 thumbnail.png">
+                    <source src="videos/VIC 2025 Recording (7th of March 2025).mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Flip Book for VIC competition</p>
+            </div>
+        </section>
+
+        <!-- Section 2: 12-Week Project Timeline -->
+        <section class="project-section">
+            <h2><i class="fa-solid fa-list-ol"></i> 12-Week Project Timeline</h2>
+            <table class="timeline-table">
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Date</th>
+                        <th>Detail</th>
+                        <th>Video</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>10th Feb 2025</td><td>Administering pre-test (Module 1)</td><td><button class="open-video-modal" data-video="videos/week1.mp4">Play Video</button></td></tr>
+                    <tr><td>2</td><td>-</td><td>Step-by-step guidelines for Job Application Letter</td><td>-</td></tr>
+                    <tr><td>3</td><td>25th Feb 2025</td><td>Step-by-step guidelines for Resume or Curriculum Vitae</td><td><button class="open-video-modal" data-video="videos/week3.mp4">Play Video</button></td></tr>
+                    <tr><td>4</td><td>4th Mar 2025</td><td>Step-by-step guidelines for Minutes of Meeting</td><td><button class="open-video-modal" data-video="videos/week4.mp4">Play Video</button></td></tr>
+                    <tr><td>5</td><td>11th Mar 2025</td><td>Step-by-step guidelines for Informal Proposal</td><td><button class="open-video-modal" data-video="videos/week5.mp4">Play Video</button></td></tr>
+                    <tr><td>6</td><td>21st Mar 2025</td><td>Incorporating Module 1 in the lessons</td><td><button class="open-video-modal" data-video="videos/week6.mp4" data-poster="videos/week6-thumb.png">Play Video</button></td></tr>
+                    <tr><td>7</td><td>25th Mar 2025</td><td>Incorporating Module 2 in the lessons</td><td><button class="open-video-modal" data-video="videos/week7.mp4" data-poster="videos/week7-thumb.png">Play Video</button></td></tr>
+                    <tr><td>8</td><td>29th Mar 2025</td><td>Incorporating Module 2 in the lessons</td><td><button class="open-video-modal" data-video="videos/week8.mp4" data-poster="videos/week8-thumb.png">Play Video</button></td></tr>
+                    <tr><td>9</td><td>8th Apr 2025</td><td>Incorporating Module 3 in the lessons</td><td><button class="open-video-modal" data-video="videos/week9.mp4" data-poster="videos/week9-thumb.png">Play Video</button></td></tr>
+                    <tr><td>10</td><td>15th Apr 2025</td><td>Administering post-test (Module 3)</td><td><button class="open-video-modal" data-video="videos/week10.mp4" data-poster="videos/week10-thumb.png">Play Video</button></td></tr>
+                    <tr><td>11</td><td>22nd Apr 2025</td><td>Writing task</td><td><button class="open-video-modal" data-video="videos/week11.mp4" data-poster="videos/week11-thumb.png">Play Video</button></td></tr>
+                    <tr><td>12</td><td>29th Apr 2025</td><td>Administering additional writing prompts in the form of questionnaire</td><td><button class="open-video-modal" data-video="videos/week12.mp4" data-poster="videos/week12-thumb.png">Play Video</button></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Section 3: Module Recordings -->
+
+    </main>
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <video id="modal-video" controls width="700" style="max-width: 90vw; max-height: 80vh; background: #000;" poster="">
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <script>
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+        // Now run the highlight script after nav is loaded
+        const links = document.querySelectorAll('#main-nav a');
+        const path = window.location.pathname.replace(/\\/g, '/');
+        links.forEach(link => {
+          if (link.getAttribute('href') === path || (path === '/project-planning.html' && link.getAttribute('href') === '/project-planning.html')) {
+            link.classList.add('active');
+          }
+        });
+      });
+
+    // Modal video logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('video-modal');
+      const modalVideo = document.getElementById('modal-video');
+      const modalClose = document.querySelector('.video-modal-close');
+      document.querySelectorAll('.open-video-modal').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const videoSrc = this.getAttribute('data-video');
+          const poster = "videos/video-thumb.png";
+          modalVideo.querySelector('source').src = videoSrc;
+          modalVideo.poster = poster;
+          modalVideo.load();
+          modal.style.display = 'flex';
+        });
+      });
+      modalClose.onclick = function() {
+        modal.style.display = 'none';
+        modalVideo.pause();
+      };
+      window.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          modalVideo.pause();
+        }
+      };
+    });
+    </script>
+</body>
+</html>
