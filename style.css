@@ -38,7 +38,7 @@ nav a.active {
 }
 
 main {
-    max-width: 700px;
+    max-width: 900px;
     margin: 2rem auto;
     background: #fff;
     border-radius: 8px;
@@ -155,4 +155,82 @@ ul {
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
+}
+
+.project-section {
+    margin-bottom: 2.5rem;
+}
+
+.video-item {
+    text-align: center;
+    flex: 1 1 220px;
+}
+
+.video-item video {
+    width: 510px;
+    height: 280px;
+    background: #eee;
+    border-radius: 8px;
+    margin: 0.5rem;
+}
+
+.timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.timeline-table th,
+.timeline-table td {
+    border: 1px solid #e0e0e0;
+    padding: 0.5rem 0.7rem;
+    text-align: left;
+}
+
+.timeline-table th {
+    background: #ffb347;
+    color: #222;
+}
+
+.project-hero {
+    background: black;
+}
+
+.video-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.video-modal-content {
+    background: transparent;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.25);
+    padding: 0;
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.2s;
+}
+
+.video-modal-close:hover {
+    color: #ffb347;
 }
