@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortal Combat Your Writing through “Flip Book”</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Mortal Combat Your Writing through “Flip Book”</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main id="home">
+        <section class="impact-list">
+            <div class="impact-item">
+                <i class="fa-solid fa-eye info-icon"></i>
+                <div class="info-content">
+                    <h2>Vision</h2>
+                    <p>To provide the educators with a pedagogical tool to encourage active learning in English lessons</p>
+                </div>
+            </div>
+            <div class="impact-item">
+                <i class="fa-solid fa-bullseye info-icon"></i>
+                <div class="info-content">
+                    <h2>Mission</h2>
+                    <ul>
+                        <li>To enhance the students' awareness of metadiscourse features in developing their writing skills through constructivism</li>
+                        <li>To guide the students to learn the steps on how to use metadiscourse features appropriately and leverage readers' engagement through constructivism</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+        // Now run the highlight script after nav is loaded
+        const links = document.querySelectorAll('#main-nav a');
+        const path = window.location.pathname.replace(/\\/g, '/');
+        links.forEach(link => {
+          if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>
