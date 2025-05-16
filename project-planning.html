@@ -6,6 +6,86 @@
     <title>Project Planning - Mortal Combat Your Writing through "Flip Book"</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .image-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .timeline-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .timeline-image-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .timeline-image-caption {
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-images {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <section class="hero project-hero">
@@ -36,80 +116,226 @@
                         <th>Week</th>
                         <th>Date</th>
                         <th>Detail</th>
-                        <th>Video</th>
+                        <th>Images</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>1</td><td>10th Feb 2025</td><td>Administering pre-test (Module 1)</td><td><button class="open-video-modal" data-video="videos/week1.mp4">Play Video</button></td></tr>
-                    <tr><td>2</td><td>-</td><td>Step-by-step guidelines for Job Application Letter</td><td>-</td></tr>
-                    <tr><td>3</td><td>25th Feb 2025</td><td>Step-by-step guidelines for Resume or Curriculum Vitae</td><td><button class="open-video-modal" data-video="videos/week3.mp4">Play Video</button></td></tr>
-                    <tr><td>4</td><td>4th Mar 2025</td><td>Step-by-step guidelines for Minutes of Meeting</td><td><button class="open-video-modal" data-video="videos/week4.mp4">Play Video</button></td></tr>
-                    <tr><td>5</td><td>11th Mar 2025</td><td>Step-by-step guidelines for Informal Proposal</td><td><button class="open-video-modal" data-video="videos/week5.mp4">Play Video</button></td></tr>
-                    <tr><td>6</td><td>21st Mar 2025</td><td>Incorporating Module 1 in the lessons</td><td><button class="open-video-modal" data-video="videos/week6.mp4" data-poster="videos/week6-thumb.png">Play Video</button></td></tr>
-                    <tr><td>7</td><td>25th Mar 2025</td><td>Incorporating Module 2 in the lessons</td><td><button class="open-video-modal" data-video="videos/week7.mp4" data-poster="videos/week7-thumb.png">Play Video</button></td></tr>
-                    <tr><td>8</td><td>29th Mar 2025</td><td>Incorporating Module 2 in the lessons</td><td><button class="open-video-modal" data-video="videos/week8.mp4" data-poster="videos/week8-thumb.png">Play Video</button></td></tr>
-                    <tr><td>9</td><td>8th Apr 2025</td><td>Incorporating Module 3 in the lessons</td><td><button class="open-video-modal" data-video="videos/week9.mp4" data-poster="videos/week9-thumb.png">Play Video</button></td></tr>
-                    <tr><td>10</td><td>15th Apr 2025</td><td>Administering post-test (Module 3)</td><td><button class="open-video-modal" data-video="videos/week10.mp4" data-poster="videos/week10-thumb.png">Play Video</button></td></tr>
-                    <tr><td>11</td><td>22nd Apr 2025</td><td>Writing task</td><td><button class="open-video-modal" data-video="videos/week11.mp4" data-poster="videos/week11-thumb.png">Play Video</button></td></tr>
-                    <tr><td>12</td><td>29th Apr 2025</td><td>Administering additional writing prompts in the form of questionnaire</td><td><button class="open-video-modal" data-video="videos/week12.mp4" data-poster="videos/week12-thumb.png">Play Video</button></td></tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10th Feb 2025</td>
+                        <td>Administering pre-test (Module 1)</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week1/image1.png",
+                            "images/week1/image2.png",
+                            "images/week1/image3.png"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>-</td>
+                        <td>Step-by-step guidelines for Job Application Letter</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>25th Feb 2025</td>
+                        <td>Step-by-step guidelines for Resume or Curriculum Vitae</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week3/image1.png",
+                            "images/week3/image2.jpg",
+                            "images/week3/image3.jpg"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>4th Mar 2025</td>
+                        <td>Step-by-step guidelines for Minutes of Meeting</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week4/image1.png",
+                            "images/week4/image2.png",
+                            "images/week4/image3.jpg"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>11th Mar 2025</td>
+                        <td>Step-by-step guidelines for Informal Proposal</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week5/image1.jpg",
+                            "images/week5/image2.jpg",
+                            "images/week5/image3.png"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>21st Mar 2025</td>
+                        <td>Incorporating Module 1 in the lessons</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week6/image1.png",
+                            "images/week6/image2.png",
+                            "images/week6/image3.png"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>25th Mar 2025</td>
+                        <td>Incorporating Module 2 in the lessons</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week7/image1.jpg",
+                            "images/week7/image2.jpg",
+                            "images/week7/image3.png"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>29th Mar 2025</td>
+                        <td>Incorporating Module 2 in the lessons</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week8/image1.jpg",
+                            "images/week8/image2.jpg",
+                            "images/week8/image3.jpg"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>8th Apr 2025</td>
+                        <td>Incorporating Module 3 in the lessons</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week9/image1.jpg",
+                            "images/week9/image2.jpg",
+                            "images/week9/image3.jpg"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>15th Apr 2025</td>
+                        <td>Administering post-test (Module 3)</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week10/image1.jpg",
+                            "images/week10/image2.jpg",
+                            "images/week10/image3.jpg"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>22nd Apr 2025</td>
+                        <td>Writing task</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week11/image1.png",
+                            "images/week11/image2.png",
+                            "images/week11/image3.png"
+                        ]'>View Images</button></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>29th Apr 2025</td>
+                        <td>Administering additional writing prompts in the form of questionnaire</td>
+                        <td><button class="timeline-image-btn" data-images='[
+                            "images/week12/image1.jpg",
+                            "images/week12/image2.jpg",
+                            "images/week12/image3.jpg",
+                            "images/week12/image4.jpg"
+                        ]'>View Images</button></td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <!-- Section 3: Module Recordings -->
-
-    </main>
-    <!-- Video Modal -->
-    <div id="video-modal" class="video-modal">
-        <div class="video-modal-content">
-            <span class="video-modal-close">&times;</span>
-            <video id="modal-video" controls width="700" style="max-width: 90vw; max-height: 80vh; background: #000;" poster="">
-                <source src="" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <!-- Image Modal -->
+        <div id="image-modal" class="image-modal">
+            <div class="image-modal-content">
+                <span class="image-modal-close">&times;</span>
+                <div class="image-nav">
+                    <button class="image-nav-btn prev-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="image-nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <img id="modal-image" src="" alt="Timeline Image">
+                <div class="image-counter"></div>
+            </div>
         </div>
-    </div>
-    <script>
-    fetch('nav.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('nav-placeholder').innerHTML = html;
-        // Now run the highlight script after nav is loaded
-        const links = document.querySelectorAll('#main-nav a');
-        const path = window.location.pathname.replace(/\\/g, '/');
-        links.forEach(link => {
-          if (link.getAttribute('href') === path || (path === '/project-planning.html' && link.getAttribute('href') === '/project-planning.html')) {
-            link.classList.add('active');
-          }
-        });
-      });
 
-    // Modal video logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('video-modal');
-      const modalVideo = document.getElementById('modal-video');
-      const modalClose = document.querySelector('.video-modal-close');
-      document.querySelectorAll('.open-video-modal').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const videoSrc = this.getAttribute('data-video');
-          const poster = "videos/video-thumb.png";
-          modalVideo.querySelector('source').src = videoSrc;
-          modalVideo.poster = poster;
-          modalVideo.load();
-          modal.style.display = 'flex';
+        <script>
+        fetch('nav.html')
+          .then(res => res.text())
+          .then(html => {
+            document.getElementById('nav-placeholder').innerHTML = html;
+            const links = document.querySelectorAll('#main-nav a');
+            const path = window.location.pathname.replace(/\\/g, '/');
+            links.forEach(link => {
+              if (link.getAttribute('href') === path || (path === '/project-planning.html' && link.getAttribute('href') === '/project-planning.html')) {
+                link.classList.add('active');
+              }
+            });
+          });
+
+        // Image Modal logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            const modalClose = document.querySelector('.image-modal-close');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const imageCounter = document.querySelector('.image-counter');
+            
+            let currentImages = [];
+            let currentIndex = 0;
+
+            function updateImage() {
+                modalImg.src = currentImages[currentIndex];
+                imageCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+                
+                // Update button states
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === currentImages.length - 1;
+            }
+
+            document.querySelectorAll('.timeline-image-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentImages = JSON.parse(this.getAttribute('data-images'));
+                    currentIndex = 0;
+                    updateImage();
+                    modal.style.display = 'flex';
+                });
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateImage();
+                }
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < currentImages.length - 1) {
+                    currentIndex++;
+                    updateImage();
+                }
+            });
+
+            modalClose.onclick = function() {
+                modal.style.display = 'none';
+            };
+
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(event) {
+                if (modal.style.display === 'flex') {
+                    if (event.key === 'ArrowLeft' && !prevBtn.disabled) {
+                        prevBtn.click();
+                    } else if (event.key === 'ArrowRight' && !nextBtn.disabled) {
+                        nextBtn.click();
+                    } else if (event.key === 'Escape') {
+                        modalClose.click();
+                    }
+                }
+            });
         });
-      });
-      modalClose.onclick = function() {
-        modal.style.display = 'none';
-        modalVideo.pause();
-      };
-      window.onclick = function(event) {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-          modalVideo.pause();
-        }
-      };
-    });
-    </script>
+        </script>
+    </main>
 </body>
 </html>
