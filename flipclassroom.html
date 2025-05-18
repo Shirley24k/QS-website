@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Classroom - Mortal Combat Your Writing through "Flip Book"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero sustainability-hero">
+        <div class="hero-content">
+            <h1>Flip Classroom</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main>
+        <div class="flipclassroom-container">
+            <div class="module-recordings">
+                <h2>Recordings from Modules 1 to 3</h2>
+                
+                <div class="info-box">
+                    <p><strong>Flipped Classroom:</strong> The students discussed with their group members at the Microsoft Teams private channel. After that, they would present their discussions in the class.</p>
+                </div>
+                
+                <div class="modules-container">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 1</h3>
+                        </div>
+                        <div class="module-content">
+                            <ul class="tutorial-list">
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module1-tutorial1-group1" data-title="Module 1: Tutorial 1 (Group 1)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 1 (Group 1)</span>
+                                    </a>
+                                </li>
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module1-tutorial1-group2" data-title="Module 1: Tutorial 1 (Group 2)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 1 (Group 2)</span>
+                                    </a>
+                                </li>
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module1-tutorial1-group3" data-title="Module 1: Tutorial 1 (Group 3)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 1 (Group 3)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 2</h3>
+                        </div>
+                        <div class="module-content">
+                            <ul class="tutorial-list">
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module2-tutorial1-group3a" data-title="Module 2: Tutorial 1 (Group 3A)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 1 (Group 3A)</span>
+                                    </a>
+                                </li>
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module2-tutorial2-group1" data-title="Module 2: Tutorial 2 (Group 1)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 2 (Group 1)</span>
+                                    </a>
+                                </li>
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module2-tutorial2-group2" data-title="Module 2: Tutorial 2 (Group 2)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 2 (Group 2)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h3>Module 3</h3>
+                        </div>
+                        <div class="module-content">
+                            <ul class="tutorial-list">
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module3-tutorial2-group3" data-title="Module 3: Tutorial 2 (Group 3)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 2 (Group 3)</span>
+                                    </a>
+                                </li>
+                                <li class="tutorial-item">
+                                    <a class="tutorial-link" data-video="module3-tutorial2-group4" data-title="Module 3: Tutorial 2 (Group 4)">
+                                        <div class="video-icon">▶</div>
+                                        <span>Tutorial 2 (Group 4)</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Video Title</h3>
+                    <button class="modal-close" id="closeModal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="video-container" id="videoContainer">
+                        <!-- Video will be inserted here by JavaScript -->
+                        <div class="placeholder-message">Video player will appear here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Video Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('videoModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const videoContainer = document.getElementById('videoContainer');
+            const closeModal = document.getElementById('closeModal');
+            const tutorialLinks = document.querySelectorAll('.tutorial-link');
+            
+            // Video URLs - Replace these with your actual video URLs
+            const videoSources = {
+                'module1-tutorial1-group1': './videos/FlipClassroom/T1_G1_Module1.mp4',
+                'module1-tutorial1-group2': './videos/FlipClassroom/T1_G2_Module1.mp4',
+                'module1-tutorial1-group3': './videos/FlipClassroom/T1_G3_Module1.mp4',
+                'module2-tutorial1-group3a': './videos/FlipClassroom/T1_G3A_Module2.mp4',
+                'module2-tutorial2-group1': './videos/FlipClassroom/T2_G1_Module2.mp4',
+                'module2-tutorial2-group2': './videos/FlipClassroom/T2_G2_Module2.mp4',
+                'module3-tutorial2-group3': './videos/FlipClassroom/T2_G3_Module3.mp4',
+                'module3-tutorial2-group4': './videos/FlipClassroom/T2_G4_Module3.mp4'
+            };
+            
+            // Open modal when a tutorial link is clicked
+            tutorialLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const videoId = this.getAttribute('data-video');
+                    const videoTitle = this.getAttribute('data-title');
+                    const videoUrl = videoSources[videoId];
+                    
+                    // Set modal title
+                    modalTitle.textContent = videoTitle;
+                    
+                    // Clear previous video content
+                    videoContainer.innerHTML = '';
+                    
+                    // Create video element
+                    if (videoUrl) {
+                        const videoElement = document.createElement('video');
+                        videoElement.src = videoUrl;
+                        videoElement.controls = true;
+                        videoElement.autoplay = true;
+                        videoContainer.appendChild(videoElement);
+                    } else {
+                        // Fallback placeholder for demo/development
+                        videoContainer.innerHTML = `
+                            <div class="placeholder-message">
+                                Video player for "${videoTitle}" would load here.<br>
+                                <small>(Video URL not configured)</small>
+                            </div>
+                        `;
+                    }
+                    
+                    // Show modal
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent body scrolling
+                });
+            });
+            
+            // Close modal when the close button is clicked
+            closeModal.addEventListener('click', function() {
+                closeVideoModal();
+            });
+            
+            // Close modal when clicking outside the content
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeVideoModal();
+                }
+            });
+            
+            // Close modal with escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    closeVideoModal();
+                }
+            });
+            
+            function closeVideoModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore body scrolling
+                
+                // Stop video if playing
+                const videoElements = videoContainer.querySelectorAll('video');
+                videoElements.forEach(video => {
+                    video.pause();
+                    video.currentTime = 0;
+                });
+                
+                // Clear iframe if using embedded videos
+                const iframeElements = videoContainer.querySelectorAll('iframe');
+                iframeElements.forEach(iframe => {
+                    iframe.src = '';
+                });
+            }
+        });
+
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+        // Now run the highlight script after nav is loaded
+        const links = document.querySelectorAll('#main-nav a');
+        const path = window.location.pathname.replace(/\\/g, '/');
+        links.forEach(link => {
+          if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>
