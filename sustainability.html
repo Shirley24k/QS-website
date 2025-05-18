@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sustainability - Mortal Combat Your Writing through "Flip Book"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero sustainability-hero">
+        <div class="hero-content">
+            <h1>Sustainability</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main id="sustainability">
+        <div class="sustainability-container">
+            <div class="sustainability-list">
+                <div class="sustainability-card">
+                    <div class="card-header">
+                        <h3>Funding & Duration</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>The project is fully funded through collaboration with six universities in Malaysia via the Ministry of Higher Education.</p>
+                        <p>The project is planned for a 12-month duration, ensuring thorough implementation and assessment.</p>
+                    </div>
+                </div>
+                
+                <div class="sustainability-card">
+                    <div class="card-header">
+                        <h3>University Impact</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>This initiative will help course instructors incorporate our online module into their teaching.</p>
+                        <p>Students will learn to employ appropriate metadiscourse features in their professional reports.</p>
+                        <p>The language constructs extracted from report samples provide practical examples of metadiscourse in action.</p>
+                    </div>
+                </div>
+                
+                <div class="sustainability-card">
+                    <div class="card-header">
+                        <h3>Community Benefits</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Our innovation serves as a valuable teaching resource in writing classrooms for both academics and students.</p>
+                        <p>Writers across various genres can benefit, including those focused on creative writing, academic writing, and beyond.</p>
+                    </div>
+                </div>
+                
+                <div class="sustainability-card">
+                    <div class="card-header">
+                        <h3>Society Impact</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>This innovation contributes to the body of knowledge on metadiscourse features in professional report writing.</p>
+                        <p>It examines how metadiscourse usage affects readers' understanding of reports' concepts and content.</p>
+                        <p>The project will establish guidelines for authors to include metadiscourse elements in reports, addressing issues in professional writing.</p>
+                    </div>
+                </div>
+                
+                <div class="sustainability-card">
+                    <div class="card-header">
+                        <h3>National Contribution</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Our step-by-step guidelines and assessment instruments help content developers construct proper guidelines for writing courses.</p>
+                        <p>The online module includes pre-tests and post-tests of Metadiscourse Awareness, along with writing samples and prompts.</p>
+                        <p>This initiative ensures that professional reports become more comprehensible and reader-friendly while helping students develop professional writing skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+        // Now run the highlight script after nav is loaded
+        const links = document.querySelectorAll('#main-nav a');
+        const path = window.location.pathname.replace(/\\/g, '/');
+        links.forEach(link => {
+          if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>

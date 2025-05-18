@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audience - Mortal Combat Your Writing through "Flip Book"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero impact-hero">
+        <div class="hero-content">
+            <h1>Audience</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main>
+        <div class="audience-container">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Basic Professional Writing February 2025 Students</h1>
+            
+            <!-- All Students Section -->
+            <div class="gallery-section-container">
+                <div class="gallery-section">
+                    <h2 class="section-title">All Students</h2>
+                    <div class="gallery-container">
+                        <div class="gallery-slider" id="all-students-slider">
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/P2.jpg">
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/P1.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination" id="all-students-pagination">
+                        <div class="pagination-dot active" data-index="0"></div>
+                        <div class="pagination-dot" data-index="1"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- T1 Students Section -->
+            <div class="gallery-section-container">
+                <div class="gallery-section">
+                    <h2 class="section-title">T1 Students</h2>
+                    <div class="gallery-container">
+                        <div class="gallery-slider" id="t1-students-slider">
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/T1/P3.jpg">
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/T1/P2.jpg">
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/T1/P1.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination" id="t1-students-pagination">
+                        <div class="pagination-dot active" data-index="0"></div>
+                        <div class="pagination-dot" data-index="1"></div>
+                        <div class="pagination-dot" data-index="2"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- T2 Students Section -->
+            <div class="gallery-section-container">
+                <div class="gallery-section">
+                    <h2 class="section-title">T2 Students</h2>
+                    <div class="gallery-container">
+                        <div class="gallery-slider" id="t2-students-slider">
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/T2/P1.jpg">
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/T2/P2.jpg">
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <div class="image-wrapper">
+                                    <img src="./images/BPW_Jan25_GrpPhoto/T2/P3.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pagination" id="t2-students-pagination">
+                        <div class="pagination-dot active" data-index="0"></div>
+                        <div class="pagination-dot" data-index="1"></div>
+                        <div class="pagination-dot" data-index="2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all galleries
+            initGallery('all-students');
+            initGallery('t1-students');
+            initGallery('t2-students');
+            
+            function initGallery(id) {
+                const slider = document.getElementById(`${id}-slider`);
+                const pagination = document.getElementById(`${id}-pagination`);
+                const dots = pagination.querySelectorAll('.pagination-dot');
+                let currentIndex = 0;
+                
+                // Set up pagination dots
+                dots.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        updateGallery(index);
+                    });
+                });
+                
+                function updateGallery(index) {
+                    // Update slider position
+                    slider.style.transform = `translateX(-${index * 100}%)`;
+                    
+                    // Update active dot
+                    dots.forEach(d => d.classList.remove('active'));
+                    dots[index].classList.add('active');
+                    
+                    currentIndex = index;
+                }
+                
+                // Auto-advance gallery every 5 seconds
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % dots.length;
+                    updateGallery(currentIndex);
+                }, 5000);
+            }
+        });
+
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('nav-placeholder').innerHTML = html;
+        // Now run the highlight script after nav is loaded
+        const links = document.querySelectorAll('#main-nav a');
+        const path = window.location.pathname.replace(/\\/g, '/');
+        links.forEach(link => {
+          if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+            link.classList.add('active');
+          }
+        });
+      });
+    </script>
+</body>
+</html>
