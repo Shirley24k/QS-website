@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback - Mortal Combat Your Writing through "Flip Book"</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <section class="hero sustainability-hero">
+        <div class="hero-content">
+            <h1>Student Feedback on Flip Book</h1>
+        </div>
+    </section>
+    <div id="nav-placeholder"></div>
+    <main id="sustainability">
+        <div class="sustainability-container">
+            <div class="sustainability-list" id="feedback-list">
+                <!-- Feedback cards will be dynamically inserted here -->
+            </div>
+            <button id="load-more-btn" style="display:block;margin:20px auto;">Load More</button>
+        </div>
+    </main>
+    <script>
+    const feedbackData = [
+        {
+            student: "Student 1",
+            feedback: "Accompanying the Flip Book is the use of learning applications, such as Kahoot!, Mentimeter and Vevox where it has created a more interactive learning experience. I got to meet with my team and discussed the questions that have been provided by the lecturer."
+        },
+        {
+            student: "Student 2",
+            feedback: "I think that using learning applications like Kahoot!, Mentimeter and Vevox is a great experience in making the lecture more interesting. There is also more interaction in the lecture, not only between students and lecturer but also among the students when doing group work."
+        },
+        {
+            student: "Student 3",
+            feedback: "Using learning applications such as Kahoot!, Mentimeter and Vevox is quite familiar to me since I tried it during secondary school. Playing these applications is very interesting, but at the same time is challenging because I think it is stressful to answer questions within a limited time, but still fun."
+        },
+        {
+            student: "Student 4",
+            feedback: "When using the learning application, students generally perceive learning applications like Kahoot!, Mentimeter and Vevox as engaging and interactive tools that enhance writing lessons. These platforms make learning more enjoyable through real-time quizzes, polls, and collaborative activities, helping students stay motivated and actively involved."
+        },
+        {
+            student: "Student 5",
+            feedback: "The involvement of learning applications such as Kahoot!, Mentimeter and Vevox in the writing session made the lessons more interesting and enjoyable. It encouraged my participation and involvement in class on quizzes and discussion which reinforce knowledge and innovate ideas."
+        },
+        {
+            student: "Student 6",
+            feedback: "Dr. Esther made the learning experience even more interactive by incorporating platforms such as Kahoot!, Mentimeter and Vevox for pre-tests and post-tests. These tools allowed us to visualize our progress and identify areas for improvement, making the learning process more motivating and engaging."
+        },
+        {
+            student: "Student 7",
+            feedback: "Other than Flip Book, learning applications such as Kahoot!, Mentimeter and Vevox were used within the classes. These applications allow you to actively participate in and learn in the lesson."
+        },
+        {
+            student: "Student 8",
+            feedback: "Interactive platforms like Kahoot!, Mentimeter and Vevox make learning engaging and fun. These applications encourage participation and help me stay focused in class."
+        },
+        {
+            student: "Student 9",
+            feedback: "The inclusion of learning applications like Kahoot!, Mentimeter and Vevox added a dynamic layer to the lessons. These tools turned traditional learning into an interactive experience, fostering a sense of participation and enthusiasm. They were especially effective in breaking the monotony and enhancing understanding through real-time feedback and collaboration."
+        },
+        {
+            student: "Student 10",
+            feedback: "Using the learning applications, such as Kahoot!, Mentimeter and Vevox in the writing lessons is making the class more enjoyable and more interesting. This is because, I can use this to make the writing lessons more interactive and fun. These tools definitely boosted engagement and helped me retain information better."
+        },
+        {
+            student: "Student 11",
+            feedback: "Beyond the Flip Book, the integration of learning applications such as Kahoot!, Mentimeter and Vevox made the lessons more interactive and dynamic."
+        },
+        {
+            student: "Student 12",
+            feedback: "In my perception, using learning applications, such as Kahoot!, Mentimeter and Vevox in the writing lessons is fun and interesting."
+        },
+        {
+            student: "Student 13",
+            feedback: "We used some learning applications like Kahoot!, Mentimeter and Vevox as our voting channels. So that, she can get the answers from us and review the statistics for the correctness of our class. Every question will be discussed, explained and elaborated, she even provide some example or scenarios for us to ensure we understand to handle some cases when facing difficulties."
+        },
+        {
+            student: "Student 14",
+            feedback: "The use of applications like Kahoot!, Mentimeter and Vevox has greatly enhanced classroom interaction. These tools have created a lively and enthusiastic learning atmosphere, and their real-time feedback features have allowed me to assess my understanding of the material more effectively."
+        },
+        {
+            student: "Student 15",
+            feedback: "I think that Mentimeter and Vevox should have a restriction that only registered UTAR account can vote once. I must confess that I created around 40 accounts to vote for my team, resulting in total victory. I think it does not differ too much from using Kahoot! as it also promotes engagement in the classroom."
+        }
+    ];
+
+    const feedbackList = document.getElementById('feedback-list');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const BATCH_SIZE = 5;
+    let currentIndex = 0;
+
+    function renderFeedbackCards(start, count) {
+        for (let i = start; i < Math.min(start + count, feedbackData.length); i++) {
+            const card = document.createElement('div');
+            card.className = 'sustainability-card';
+            card.innerHTML = `
+                <div class="card-header">
+                    <h3>${feedbackData[i].student}</h3>
+                </div>
+                <div class="card-body">
+                    <p>${feedbackData[i].feedback}</p>
+                </div>
+            `;
+            feedbackList.appendChild(card);
+        }
+    }
+
+    function loadMoreFeedback() {
+        renderFeedbackCards(currentIndex, BATCH_SIZE);
+        currentIndex += BATCH_SIZE;
+        if (currentIndex >= feedbackData.length) {
+            loadMoreBtn.style.display = 'none';
+        }
+    }
+
+    loadMoreBtn.addEventListener('click', loadMoreFeedback);
+
+    // Initial load
+    loadMoreFeedback();
+
+        fetch('nav.html')
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('nav-placeholder').innerHTML = html;
+            // Now run the highlight script after nav is loaded
+            const links = document.querySelectorAll('#main-nav a');
+            const path = window.location.pathname.replace(/\\/g, '/');
+            links.forEach(link => {
+            if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
+                link.classList.add('active');
+            }
+            });
+        });
+    </script>
+</body>
+</html>
