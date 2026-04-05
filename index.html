@@ -3,9 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mortal Combat Your Writing through “Flip Book”</title>
+    <title>Flip Book - Writing Programs</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 200px);
+            padding: 2rem;
+        }
+
+        .landing-content {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .landing-content h1 {
+            font-size: 3rem;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        .landing-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .programs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .program-card {
+            background: linear-gradient(135deg, #f9f6f2 0%, #fff 100%);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-color: #1a5276;
+        }
+
+        .program-icon {
+            font-size: 4rem;
+            color: #1a5276;
+            margin-bottom: 1rem;
+        }
+
+        .program-card h2 {
+            font-size: 1.8rem;
+            color: #1a5276;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .program-card p {
+            color: #666;
+            font-size: 1rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .program-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a5276 0%, #2c3e50 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .program-btn:hover {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1e2e 100%);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .landing-content h1 {
+                font-size: 2rem;
+            }
+
+            .landing-content p {
+                font-size: 1rem;
+            }
+
+            .programs-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .program-card {
+                padding: 2rem;
+            }
+
+            .program-icon {
+                font-size: 3rem;
+            }
+
+            .program-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <section class="hero">
@@ -13,42 +139,27 @@
             <h1>Mortal Combat Your Writing through “Flip Book”</h1>
         </div>
     </section>
-    <div id="nav-placeholder"></div>
-    <main id="home">
-        <section class="impact-list">
-            <div class="impact-item">
-                <i class="fa-solid fa-eye info-icon"></i>
-                <div class="info-content">
-                    <h2>Vision</h2>
-                    <p>To provide the educators with a pedagogical tool to encourage active learning in English lessons</p>
-                </div>
-            </div>
-            <div class="impact-item">
-                <i class="fa-solid fa-bullseye info-icon"></i>
-                <div class="info-content">
-                    <h2>Mission</h2>
-                    <ul>
-                        <li>To enhance the students' awareness of metadiscourse features in developing their writing skills through constructivism</li>
-                        <li>To guide the students to learn the steps on how to use metadiscourse features appropriately and leverage readers' engagement through constructivism</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <main class="landing-page">
+        <div class="landing-content">
+            <h1>Welcome to Flip Book</h1>
+            <p>Select a writing program to explore the innovative flip book learning experience</p>
+        </div>
+
+        <div class="programs-container">
+            <a href="Basic Professional Writing/index.html" class="program-card">
+                <i class="fas fa-briefcase program-icon"></i>
+                <h2>Basic Professional Writing</h2>
+                <p>Learn professional writing skills including job applications, resumes, formal letters, and business documents through interactive modules and real-world examples.</p>
+                <button class="program-btn">Explore Program</button>
+            </a>
+
+            <a href="Academic Writing/index.html" class="program-card">
+                <i class="fas fa-graduation-cap program-icon"></i>
+                <h2>Academic Writing</h2>
+                <p>Master academic writing skills for research papers, essays, and scholarly publications through interactive modules and real-world examples.</p>
+                <button class="program-btn">Explore Program</button>
+            </a>
+        </div>
     </main>
-    <script>
-    fetch('nav.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('nav-placeholder').innerHTML = html;
-        // Now run the highlight script after nav is loaded
-        const links = document.querySelectorAll('#main-nav a');
-        const path = window.location.pathname.replace(/\\/g, '/');
-        links.forEach(link => {
-          if (link.getAttribute('href') === path || (path === '/' && link.getAttribute('href') === '/')) {
-            link.classList.add('active');
-          }
-        });
-      });
-    </script>
 </body>
 </html>
