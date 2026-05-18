@@ -542,18 +542,6 @@ ul {
     margin-bottom: 2.5rem;
 }
 
-.timeline-highlight {
-    border: 3px dashed #ffb347;
-    padding: 1rem;
-    background: #fff7df;
-}
-
-.timeline-note {
-    margin-bottom: 1rem;
-    font-weight: bold;
-    color: #a65c00;
-}
-
 .video-item {
     text-align: center;
     flex: 1 1 220px;
